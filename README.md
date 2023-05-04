@@ -5,7 +5,7 @@ WSL에서 nuxt 설치시, 호스트os 브라우저에서 접속이 안되는 문
 
 ### 실행
 git clone https://github.com/WebJun/wsl-nuxt  
-cd wsl-nuxt
+cd wsl-nuxt  
 docker-compose up -d --build  
 docker exec -it wsl-nuxt-web-1 su scv -c "tar -zxvf node_modules.tar.gz"  
 ./start.sh  
