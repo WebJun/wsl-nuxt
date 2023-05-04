@@ -1,8 +1,15 @@
 ### 무엇을 해결했나
-WSL에서 nuxt 설치시, 호스트os 브라우저에서 접속이 안되는 문제
- -> docker로 nginx를 설치하여 proxy하였음.
- -> 뭔가 더 좋은 방법이 있을 것 같음
+WSL에서 nuxt 설치시, 호스트os 브라우저에서 접속이 안되는 문제  
+ -> docker로 nginx를 설치하여 proxy하였음.  
+ -> (뭔가 더 좋은 방법이 있을 것 같음)  
 
+### 실행
+git clone https://github.com/WebJun/wsl-nuxt  
+cd wsl-nuxt
+docker-compose up -d --build  
+docker exec -it wsl-nuxt-web-1 su scv -c "tar -zxvf node_modules.tar.gz"  
+./start.sh  
+http://localhost:3000/  
 
 ### version info
 root@dcff54602b92:/app# npm -v  
@@ -28,17 +35,3 @@ create-nuxt-app v5.0.0
 ot using typescript)  
 ? Continuous integration: None  
 ? Version control system: Git  
-
-### 실행
-./start.sh  
-http://localhost:13001/  
-
-
-### 에러처리
-ERROR  Cannot read properties of undefined (reading 'toLowerCase')  
-이 에러 발생시 
-app/node_modules/ws/lib/websocket-server.js:218에 아래 코드 추가
-```
-req.headers === undefined ||
-req.headers.upgrade === undefined ||
-```

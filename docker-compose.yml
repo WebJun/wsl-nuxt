@@ -3,13 +3,13 @@ services:
   web:
     image: 'ubuntu:20.04'
     build:
-      dockerfile: './web.Dockerfile'
+      dockerfile: './nginx.Dockerfile'
     stdin_open: true
     tty: true
     ports:
       - '11080:80'
       - '11022:22'
-      - '13001:3001'
+      - '3000:3001'
     volumes:
       - './app:/app'
-      - './nginx/sites-available:/etc/nginx/sites-available'
+      - './default:/etc/nginx/sites-available/default'
