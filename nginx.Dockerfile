@@ -5,7 +5,7 @@ RUN echo 'root:docker123' | chpasswd
 RUN sed -i 's@archive.ubuntu.com@mirror.kakao.com@g' /etc/apt/sources.list
 RUN apt-get update && \
     apt-get install -y --no-install-recommends sudo ca-certificates \
-    openssh-server git curl nginx
+    openssh-server git curl
 RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 WORKDIR /app
@@ -17,4 +17,4 @@ RUN npm i -g yarn
 
 RUN adduser --disabled-password --gecos "" scv
 
-ENTRYPOINT service ssh start && service nginx start && bash
+ENTRYPOINT service ssh start && bash
